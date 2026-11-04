@@ -1,0 +1,40 @@
+
+name: Build TypeScript
+
+on:
+  push:
+    branches:
+      - part-2-ui-ship
+    paths-ignore:
+      - "**.js"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get repository
+        uses: actions/checkout@v4
+        with:
+          ref: part-2-ui-ship
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install TypeScript
+        run: npm install --global typescript
+
+      - name: Compile TypeScript
+        run: tsc
+
+      - name: Commit generated JavaScript
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app.js model.js
+          git diff --cached --quiet || (git commit -m "Build compiled JavaScript" && git push)
