@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - My Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>TaskFlow</h1>
+            <p>Organize your day, one task at a time.</p>
+        </header>
+
+        <section class="task-input">
+            <input
+                type="text"
+                id="title"
+                placeholder="Enter your task..."
+            >
+            <button id="addBtn">Add Task</button>
+        </section>
+
+        <section class="filters">
+            <button data-filter="all">All</button>
+            <button data-filter="todo">Todo</button>
+            <button data-filter="in-progress">In Progress</button>
+            <button data-filter="done">Done</button>
+        </section>
+
+        <h2>My Tasks</h2>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <script type="module" src="app.js"></script>
+
+</body>
+</html>
